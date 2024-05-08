@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Binary Algorithm</h1>
+    <p id="result"></p>
+    <script>
+      function BinaryAlgorithm(arr, target) {
+        let left = 0;
+        let right = arr.length - 1;
+        let foundIndex = -1;
+
+        for (let i = 0; i < arr.length; i++) {
+          const mid = Math.floor((left + right) / 2);
+          if (arr[mid] === target) {
+            foundIndex = mid;
+            break;
+          }
+          if (arr[mid] === target) {
+            foundIndex = mid;
+            break;
+          }
+          if (arr[mid] < target) left = mid + 1;
+          else right = mid - 1;
+        }
+        return foundIndex;
+      }
+      const inventory = [2, 5, 3, 9, 6, 10];
+      const targetProduct = 2;
+      const result = BinaryAlgorithm(inventory, targetProduct);
+      const resultShow = document.getElementById("result");
+      if (result !== 1) resultShow.textContent = "product found:" + result;
+      else resultShow.textContent = "product not found.";
+    </script>
+  </body>
+</html>

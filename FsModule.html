@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Count</h1>
+    <input type="file" id="fileInput" />
+    <button onclick="CountWords()">CountWords</button>
+    <script>
+      function CountWords() {
+        const fileInput = document.getElementById("fileInput");
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const fileContent = event.target.result;
+          const words = fileContent.split(/\s+/);
+          const wordCount = words.length;
+          document.write("Number of words:", wordCount);
+        };
+        reader.onerror = function (event) {
+          console.error("Error reading file:", event.target.error);
+        };
+        reader.readAsText(file);
+      }
+    </script>
+  </body>
+</html>

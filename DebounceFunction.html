@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Debounce Function</h1>
+    <button id="Mybutton">Click Me</button>
+    <script>
+      function Debounce(func, delay) {
+        let timoutId;
+        return function () {
+          clearTimeout(timoutId);
+          timoutId = setTimeout(func, delay);
+        };
+      }
+      function MyFunction() {
+        console.log("Function Executed");
+      }
+      const DebounceFunction = Debounce(MyFunction, 1000);
+      document
+        .getElementById("Mybutton")
+        .addEventListener("click", DebounceFunction);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Filter</title>
+  </head>
+  <body>
+    <h1>Image Filter</h1>
+    <input type="file" id="imageInput" accept="image/*" />
+    <select id="filterType" onchange="applySelectedFilter()">
+      <option value="none">Normal</option>
+      <option value="blur">Blur</option>
+      <option value="grayscale">Grayscale</option>
+    </select>
+    <div id="imageContainer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+      let img;
+      let canvas;
+
+      function setup() {
+        canvas = createCanvas(400, 400);
+        canvas.parent("imageContainer");
+      }
+
+      function applySelectedFilter() {
+        let filterType = document.getElementById("filterType").value;
+
+        if (img) {
+          clear();
+          image(img, 0, 0, width, height);
+
+          if (filterType === "blur") {
+            filter(BLUR, 5);
+          } else if (filterType === "grayscale") {
+            filter(GRAY);
+          }
+        }
+      }
+
+      document
+        .getElementById("imageInput")
+        .addEventListener("change", function (event) {
+          if (event.target.files.length > 0) {
+            img = loadImage(
+              URL.createObjectURL(event.target.files[0]),
+              function () {
+                applySelectedFilter();
+              }
+            );
+          }
+        });
+    </script>
+  </body>
+</html>

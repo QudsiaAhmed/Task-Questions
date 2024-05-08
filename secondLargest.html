@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>SecondLargestNumber</h1>
+    <script>
+      function SecondLargestNumber(arr) {
+        arr.sort((a, b) => a - b);
+        let differences = [];
+        for (let i = 1; i < arr.length; i++) {
+          differences.push(arr[i] - arr[i - 1]);
+        }
+        differences.sort((a, b) => b - a);
+
+        return differences[1];
+      }
+      const arr = [3, 8, 2, 10, 5];
+      const LargestDiffrence = SecondLargestNumber(arr);
+      console.log("Second largest difference:", LargestDiffrence);
+    </script>
+  </body>
+</html>

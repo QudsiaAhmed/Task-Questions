@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encrypted Chat</title>
+  </head>
+  <body>
+    <h1>Encrypted Chat</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+      function encryptMessage(message, key) {
+        let encrypted = CryptoJS.AES.encrypt(message, key);
+        return encrypted.toString();
+      }
+      let chatHistory = [];
+      let currentUser = 1;
+      function generateKey() {
+        return CryptoJS.lib.WordArray.random(16).toString(CryptoJS.enc.Hex);
+      }
+      function sendMessage() {
+        let sender, receiver;
+        if (currentUser === 1) {
+          sender = "User 1";
+          receiver = "User 2";
+        } else {
+          sender = "User 2";
+          receiver = "User 1";
+        }
+        let message = document.getElementById("message").value;
+        let key = generateKey();
+        let encryptedMessage = encryptMessage(message, key);
+        chatHistory.push({ sender, receiver, message: encryptedMessage });
+        currentUser = 3 - currentUser;
+        // Clear input field
+        document.getElementById("message").value = "";
+        console.log(chatHistory);
+      }
+    </script>
+    <form onsubmit="sendMessage(); return false;">
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="4" cols="50"></textarea
+      ><br /><br />
+      <button type="submit">Send Message</button>
+    </form>
+  </body>
+</html>

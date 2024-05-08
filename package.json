@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@javascript-packages/roman-numerals": "^1.0.14",
+    "crypto-js": "^4.2.0"
+  }
+}

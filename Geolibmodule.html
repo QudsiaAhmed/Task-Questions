@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Geolib module</h1>
+    <script src="https://cdn.jsdelivr.net/npm/geolib@3.3.4/lib/index.min.js"></script>
+    <script>
+      function calculateDistance(coordinate1, coordinate2) {
+        return geolib.getDistance(coordinate1, coordinate2);
+      }
+      const one = { latitude: 40.89, longitude: 90.909 };
+      const two = { latitude: 80.099, longitude: 20.089 };
+      const distance = calculateDistance(one, two);
+      document.write("distance between the coordinate:", distance, "meters");
+    </script>
+  </body>
+</html>

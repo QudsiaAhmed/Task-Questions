@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>API Response</h1>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.8/dist/axios.min.js"></script>
+    <script>
+      async function FetchData(url, apiKey) {
+        try {
+          const response = await axios.get(url, {
+            headers: {
+              "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+              "x-rapidapi-key":
+                "6bd7f2dfb3msh26d45ec094382dfp16c57bjsn2484b5a756d7",
+            },
+          });
+          return response.data;
+        } catch (error) {
+          console.error("Error Fetching Data", error);
+          throw error;
+        }
+      }
+      const apiKey = "6bd7f2dfb3msh26d45ec094382dfp16c57bjsn2484b5a756d7";
+      const apiUrl = "api-football-v1.p.rapidapi.com";
+      FetchData(apiUrl, apiKey)
+        .then((data) => {
+          console.log("ResponseBody:", data);
+        })
+        .catch((error) => {
+          console.error("Error", error);
+        });
+    </script>
+  </body>
+</html>

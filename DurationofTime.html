@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <h1>Time Duration</h1>
+  <script>
+    function TimeDurtaion(currentTime) {
+      const mealTimes = [
+        { name: "Breakfast", hour: 7, minute: 0 },
+        { name: "Lunch", hour: 12, minute: 0 },
+        { name: "Breakfast", hour: 20, minute: 0 },
+      ];
+      const [currentHour, currentMinute] = currentTime.split(":").map(Number);
+      const nextMealTime =
+        mealTimes.find((meal) => {
+          return (
+            meal.hour > currentHour ||
+            (meal.hour === currentHour && meal.minute > currentMinute)
+          );
+        }) || mealTimes[0];
+
+      let HourUntillMeal = nextMealTime.hour - currentHour;
+      let MinutesUntillMeal = nextMealTime.minute - currentMinute;
+      if (MinutesUntillMeal < 0) {
+        MinutesUntillMeal += 60;
+        HourUntillMeal -= 1;
+      }
+      return [HourUntillMeal, MinutesUntillMeal, nextMealTime.name];
+    }
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    const TimeUntillNextMeal = TimeDurtaion(currentTime);
+    document.write(
+      `Time untill ${TimeUntillNextMeal[2]}: ${TimeUntillNextMeal[1]} minutes.`
+    );
+  </script>
+</html>

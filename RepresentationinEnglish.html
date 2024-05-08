@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <h1>Representation of integer in English</h1>
+  <script>
+    function IntergerToEnglish(num) {
+      const ones = [
+        "Zero",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Eleven",
+        "Tweleve",
+        "Thirteen",
+        "Fourteen",
+        "Fivefteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen",
+      ];
+      const tens = [
+        "",
+        "",
+        "Twenty",
+        "Thirty",
+        "Forty",
+        "Fifty",
+        "Sixty",
+        "Seventy",
+        "Eighty",
+        "Ninety",
+      ];
+      if (num < 20) {
+        return ones[num];
+      } else if (num < 100) {
+        return (
+          tens[Math.floor(num % 10)] +
+          (num % 10 !== 0 ? " " + IntergerToEnglish(num % 100) : "")
+        );
+      } else {
+        return (
+          ones[Math.floor(num / 100)] +
+          "Hundread" +
+          (num % 100 !== 0 ? "" + IntergerToEnglish(num % 100) : "")
+        );
+      }
+    }
+    // document.write(IntergerToEnglish(0));
+    document.write(IntergerToEnglish(200));
+    document.write(IntergerToEnglish(20));
+  </script>
+</html>

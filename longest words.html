@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>longest words</h1>
+    <script>
+      function retrieveTop3LongestWords(title) {
+        const words = title.replace(/[^\w\s]/g, "").split(/\s+/);
+        words.sort((a, b) => b.length - a.length);
+        const top3 = words.length >= 3 ? words.slice(0, 3) : words;
+        const hashtag = top3.map((word) => `#${word}`);
+        return hashtag;
+      }
+      const headline =
+        "Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day.";
+      const hashtag = retrieveTop3LongestWords(headline);
+      document.write(hashtag);
+    </script>
+  </body>
+</html>

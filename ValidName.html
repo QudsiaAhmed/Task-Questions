@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h11>Valid Name</h11>
+    <script>
+      function ValidName(name) {
+        const initialsRegex = /^[A-Z]\.$/;
+        const wordRegex = /^[A-Z][a-z]+$/;
+        const terms = name.split(" ");
+        if (terms.length < 2 || terms.length > 3) {
+          return false;
+        }
+        for (let i = 0; i < terms.length; i++) {
+          const regex = i === terms.length - 1 ? wordRegex : initialsRegex;
+          if (!terms[i].match(regex)) {
+            return false;
+          }
+        }
+        return true;
+      }
+      console.log(ValidName("H. Wells"));
+    </script>
+  </body>
+</html>

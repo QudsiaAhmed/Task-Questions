@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Vowels In String</h1>
+    <script>
+      function CountVowels(str) {
+        const Vowels = "aeiou";
+        let count = 0;
+        for (let chrac of str) {
+          if (Vowels.includes(chrac)) {
+            count++;
+          }
+        }
+        return count;
+      }
+      const input = "Hello";
+      const numberofletters = CountVowels(input);
+      document.write("Number of Vowels:", numberofletters);
+    </script>
+  </body>
+</html>

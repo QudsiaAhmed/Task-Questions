@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Arabic number into Roman Number</h1>
+    <script>
+      function ConvertNumberIntoRoman(num) {
+        const RomanNumber = [
+          [1000, "M"],
+          [900, "CM"],
+          [500, "D"],
+          [400, "CD"],
+          [100, "C"],
+          [90, "XC"],
+          [50, "L"],
+          [40, "XL"],
+          [10, "X"],
+          [9, "IX"],
+          [5, "V"],
+          [4, "IV"],
+          [1, "I"],
+        ];
+        let result = "";
+        for (const [value, roman] of RomanNumber) {
+          if (num >= value) {
+            const count = Math.floor(num / value);
+            result += roman.repeat(count);
+            num -= count * value;
+          }
+        }
+        return result;
+      }
+      document.write(ConvertNumberIntoRoman(90));
+    </script>
+  </body>
+</html>
